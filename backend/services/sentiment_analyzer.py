@@ -1,6 +1,5 @@
-from backend.sentiment_model import predict_sentiment
-from backend.analytics import sentiment_distribution, extract_keywords
-
+from backend.models.sentiment_model import predict_sentiment
+from backend.services.analytics import sentiment_distribution, extract_keywords
 
 def analyze_topic(tweets):
 
