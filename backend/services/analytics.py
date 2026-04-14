@@ -1,6 +1,8 @@
 from collections import Counter
 
 def sentiment_distribution(results):
+    if not results:
+        return {}
 
     sentiments = [r["sentiment"] for r in results]
 

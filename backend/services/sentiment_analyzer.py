@@ -1,19 +1,29 @@
+from fastapi import HTTPException
+
 from backend.models.sentiment_model import predict_sentiment
 from backend.services.analytics import sentiment_distribution, extract_keywords
 
-def analyze_topic(tweets):
+MAX_INPUT_ITEMS = 20
+
+
+def analyze_topic(texts):
+    if not texts:
+        raise HTTPException(status_code=404, detail="No news articles were found for this topic.")
+
+    if len(texts) > MAX_INPUT_ITEMS:
+        texts = texts[:MAX_INPUT_ITEMS]
 
     results = []
 
-    for tweet in tweets:
+    for text in texts:
 
-        sentiment = predict_sentiment(tweet)
+        sentiment = predict_sentiment(text)
 
         results.append(sentiment)
 
     distribution = sentiment_distribution(results)
 
-    keywords = extract_keywords(tweets)
+    keywords = extract_keywords(texts)
 
     return {
         "results": results,

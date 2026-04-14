@@ -12,14 +12,21 @@ label_map = {
 }
 
 def predict_sentiment(text):
+    safe_text = (text or "").strip()[:300]
+    if not safe_text:
+        return {
+            "text": "",
+            "sentiment": "neutral",
+            "confidence": 0.0
+        }
 
-    result = sentiment_model(text)[0]
+    result = sentiment_model(safe_text)[0]
 
     sentiment = label_map[result["label"]]
     confidence = result["score"]
 
     return {
-        "text": text,
+        "text": safe_text,
         "sentiment": sentiment,
         "confidence": confidence
     }

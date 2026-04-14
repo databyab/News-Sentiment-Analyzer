@@ -3,8 +3,7 @@ uvicorn
 transformers
 torch
 pandas
-tweepy
 python-dotenv
 scikit-learn
-requests 
-python-dotenv
+requests
+streamlit
