@@ -2,7 +2,6 @@
 
 This project fetches recent headlines for a topic, runs sentiment analysis on them, and shows the results through a FastAPI backend plus a Streamlit UI.
 
-Detailed architecture and flow documentation is available in [docs/PROJECT_GUIDE.md](docs/PROJECT_GUIDE.md).
 
 ## Setup
 
